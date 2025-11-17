@@ -1,0 +1,253 @@
+* {
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: #0f172a;
+    color: #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+}
+
+.app-container {
+    max-width: 1100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.top-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.wheel-section {
+    flex: 1 1 320px;
+    background: #020617;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.wheel-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+/* CONTENEDOR DE LA RULETA + FLECHA */
+.wheel-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Flecha / puntero fijo arriba de la ruleta */
+.wheel-pointer {
+    position: absolute;
+    top: -14px;              /* puedes subir/bajar la flecha aquí */
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg); /* 🔁 aquí la giramos 180° */
+    width: 0;
+    height: 0;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-bottom: 22px solid #facc15; /* color amarillo dorado */
+    z-index: 10;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+}
+
+
+.wheel-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+canvas.wheel-canvas {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #1f2937, #020617);
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+button {
+    background: #22c55e;
+    color: #0b1120;
+    border: none;
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
+}
+
+button:hover {
+    background: #16a34a;
+    box-shadow: 0 8px 18px rgba(34, 197, 94, 0.35);
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+button.secondary {
+    background: #334155;
+    color: #e5e7eb;
+}
+
+button.secondary:hover {
+    background: #1f2937;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.6);
+}
+
+.inputs-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.input-card {
+    flex: 1 1 250px;
+    background: #020617;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.input-card h2 {
+    margin-top: 0;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 140px;
+    border-radius: 10px;
+    border: 1px solid #1f2937;
+    background: #020617;
+    color: #e5e7eb;
+    padding: 8px;
+    resize: vertical;
+}
+
+textarea:focus {
+    outline: 2px solid #22c55e;
+}
+
+.subtitle {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    margin-bottom: 6px;
+}
+
+.history-card {
+    background: #020617;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.history-card h2 {
+    margin-top: 0;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+#historyList {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#historyList li {
+    font-size: 0.9rem;
+    padding: 4px 0;
+    border-bottom: 1px solid #0f172a;
+}
+
+#historyList li:last-child {
+    border-bottom: none;
+}
+
+.winner-actions {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 12px;
+    background: #0b1120;
+    border: 1px solid #1e293b;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+.winner-actions p {
+    margin: 0;
+    text-align: center;
+}
+
+.winner-name {
+    font-weight: 700;
+    color: #22c55e;
+}
+
+.winner-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content:center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Animación de giro para el canvas */
+.spin {
+    animation: spin 1.2s ease-out;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(1440deg);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    canvas.wheel-canvas {
+        width: 240px;
+        height: 240px;
+    }
+}

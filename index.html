@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Ruleta de Participantes y Premios</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <h1>Ruleta de Participantes y Premios</h1>
+
+        <div class="top-section">
+            <!-- Ruletas -->
+            <div class="wheel-section">
+                <div id="participantsWheelWrapper" class="wheel-wrapper">
+                    <div class="wheel-title">Ruleta de participantes</div>
+
+                    <!-- CONTENEDOR CON FLECHA + RULETA -->
+                    <div class="wheel-container">
+                        <div class="wheel-pointer"></div>
+                        <canvas id="participantsWheel" class="wheel-canvas"></canvas>
+                    </div>
+
+                    <div class="controls">
+                        <button id="spinParticipantBtn">Girar participante</button>
+                    </div>
+                </div>
+
+                <div id="prizesWheelWrapper" class="wheel-wrapper hidden">
+                    <div class="wheel-title">Ruleta de premios</div>
+
+                    <!-- CONTENEDOR CON FLECHA + RULETA -->
+                    <div class="wheel-container">
+                        <div class="wheel-pointer"></div>
+                        <canvas id="prizesWheel" class="wheel-canvas"></canvas>
+                    </div>
+
+                    <div class="controls">
+                        <button id="spinPrizeBtn">Girar premio</button>
+                    </div>
+                </div>
+
+                <!-- Acciones después de elegir participante -->
+                <div id="winnerActions" class="winner-actions hidden">
+                    <p>Ganador seleccionado: <span id="winnerName" class="winner-name"></span></p>
+                    <div class="winner-buttons">
+                        <button id="btnNoEsta" class="secondary">Borrar / No está</button>
+                        <button id="btnPresente">Presente (asignar premio)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Entradas -->
+            <div class="inputs-section">
+                <div class="input-card">
+                    <h2>Participantes</h2>
+                    <p class="subtitle">Escribe un participante por línea.</p>
+                    <textarea id="participantsInput" placeholder="Ejemplo:
+Ana
+Carlos
+Pedro
+Sofía"></textarea>
+                </div>
+                <div class="input-card">
+                    <h2>Premios</h2>
+                    <p class="subtitle">Escribe un premio por línea.</p>
+                    <textarea id="prizesInput" placeholder="Ejemplo:
+Camisa
+Taza
+Gorra
+Tarjeta de regalo"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón para cargar los datos a las ruletas -->
+        <div class="controls">
+            <button id="loadListsBtn">Cargar datos en las ruletas</button>
+        </div>
+
+        <!-- Historial -->
+        <div class="history-card">
+            <h2>Historial de ganadores</h2>
+            <ul id="historyList"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
