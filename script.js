@@ -19,6 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const historyList = document.getElementById("historyList");
 
+    // Elementos del modal
+    const winnerModal = document.getElementById("winnerModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalBody = document.getElementById("modalBody");
+    const modalCloseBtn = document.getElementById("modalCloseBtn");
+
     let participants = [];
     let prizes = [];
     let winnersHistory = [];
@@ -58,6 +64,25 @@ document.addEventListener("DOMContentLoaded", () => {
             historyList.appendChild(li);
         });
     }
+
+    // ----- MODAL -----
+    function showModal(title, message) {
+        modalTitle.textContent = title;
+        modalBody.textContent = message;
+        winnerModal.classList.remove("hidden");
+    }
+
+    function hideModal() {
+        winnerModal.classList.add("hidden");
+    }
+
+    modalCloseBtn.addEventListener("click", hideModal);
+    // Cerrar si hace click fuera del contenido
+    winnerModal.addEventListener("click", (e) => {
+        if (e.target === winnerModal) {
+            hideModal();
+        }
+    });
 
     // ================== DIBUJAR RULETA (CANVAS) ==================
     function drawWheel(canvas, items) {
@@ -231,7 +256,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const winnerName = participants[index];
                 winnerNameSpan.textContent = winnerName;
                 winnerActions.classList.remove("hidden");
-                alert("Ganador: " + winnerName);
+
+                // Popup en vez de alert
+                showModal("Ganador", `El ganador es: ${winnerName}`);
             }
         );
     });
@@ -304,7 +331,8 @@ document.addEventListener("DOMContentLoaded", () => {
             () => {
                 const prizeName = prizes[prizeIndex];
 
-                alert("Premio: " + prizeName);
+                // Popup en vez de alert
+                showModal("Premio", `El premio es: ${prizeName}`);
 
                 // Asignar premio al último ganador pendiente
                 winnersHistory[pendingHistoryIndex].prize = prizeName;

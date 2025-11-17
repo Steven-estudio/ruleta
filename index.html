@@ -9,67 +9,63 @@
     <div class="app-container">
         <h1>Ruleta de Participantes y Premios</h1>
 
-        <div class="top-section">
-            <!-- Ruletas -->
-            <div class="wheel-section">
-                <div id="participantsWheelWrapper" class="wheel-wrapper">
-                    <div class="wheel-title">Ruleta de participantes</div>
+        <!-- Sección de la ruleta (bien centrada y grande) -->
+        <div class="wheel-section">
+            <div id="participantsWheelWrapper" class="wheel-wrapper">
+                <div class="wheel-title">Ruleta de participantes</div>
 
-                    <!-- CONTENEDOR CON FLECHA + RULETA -->
-                    <div class="wheel-container">
-                        <div class="wheel-pointer"></div>
-                        <canvas id="participantsWheel" class="wheel-canvas"></canvas>
-                    </div>
-
-                    <div class="controls">
-                        <button id="spinParticipantBtn">Girar participante</button>
-                    </div>
+                <div class="wheel-container">
+                    <div class="wheel-pointer"></div>
+                    <canvas id="participantsWheel" class="wheel-canvas"></canvas>
                 </div>
 
-                <div id="prizesWheelWrapper" class="wheel-wrapper hidden">
-                    <div class="wheel-title">Ruleta de premios</div>
-
-                    <!-- CONTENEDOR CON FLECHA + RULETA -->
-                    <div class="wheel-container">
-                        <div class="wheel-pointer"></div>
-                        <canvas id="prizesWheel" class="wheel-canvas"></canvas>
-                    </div>
-
-                    <div class="controls">
-                        <button id="spinPrizeBtn">Girar premio</button>
-                    </div>
-                </div>
-
-                <!-- Acciones después de elegir participante -->
-                <div id="winnerActions" class="winner-actions hidden">
-                    <p>Ganador seleccionado: <span id="winnerName" class="winner-name"></span></p>
-                    <div class="winner-buttons">
-                        <button id="btnNoEsta" class="secondary">Borrar / No está</button>
-                        <button id="btnPresente">Presente (asignar premio)</button>
-                    </div>
+                <div class="controls">
+                    <button id="spinParticipantBtn">Girar participante</button>
                 </div>
             </div>
 
-            <!-- Entradas -->
-            <div class="inputs-section">
-                <div class="input-card">
-                    <h2>Participantes</h2>
-                    <p class="subtitle">Escribe un participante por línea.</p>
-                    <textarea id="participantsInput" placeholder="Ejemplo:
+            <div id="prizesWheelWrapper" class="wheel-wrapper hidden">
+                <div class="wheel-title">Ruleta de premios</div>
+
+                <div class="wheel-container">
+                    <div class="wheel-pointer"></div>
+                    <canvas id="prizesWheel" class="wheel-canvas"></canvas>
+                </div>
+
+                <div class="controls">
+                    <button id="spinPrizeBtn">Girar premio</button>
+                </div>
+            </div>
+
+            <!-- Acciones después de elegir participante -->
+            <div id="winnerActions" class="winner-actions hidden">
+                <p>Ganador seleccionado: <span id="winnerName" class="winner-name"></span></p>
+                <div class="winner-buttons">
+                    <button id="btnNoEsta" class="secondary">Borrar / No está</button>
+                    <button id="btnPresente">Presente (asignar premio)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inputs debajo de la ruleta -->
+        <div class="inputs-section">
+            <div class="input-card">
+                <h2>Participantes</h2>
+                <p class="subtitle">Escribe un participante por línea.</p>
+                <textarea id="participantsInput" placeholder="Ejemplo:
 Ana
 Carlos
 Pedro
 Sofía"></textarea>
-                </div>
-                <div class="input-card">
-                    <h2>Premios</h2>
-                    <p class="subtitle">Escribe un premio por línea.</p>
-                    <textarea id="prizesInput" placeholder="Ejemplo:
+            </div>
+            <div class="input-card">
+                <h2>Premios</h2>
+                <p class="subtitle">Escribe un premio por línea.</p>
+                <textarea id="prizesInput" placeholder="Ejemplo:
 Camisa
 Taza
 Gorra
 Tarjeta de regalo"></textarea>
-                </div>
             </div>
         </div>
 
@@ -82,6 +78,15 @@ Tarjeta de regalo"></textarea>
         <div class="history-card">
             <h2>Historial de ganadores</h2>
             <ul id="historyList"></ul>
+        </div>
+    </div>
+
+    <!-- MODAL / POPUP DE GANADOR / PREMIO -->
+    <div id="winnerModal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="modalTitle">Resultado</h2>
+            <p id="modalBody">Texto</p>
+            <button id="modalCloseBtn">Cerrar</button>
         </div>
     </div>
 
