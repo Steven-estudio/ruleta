@@ -57,9 +57,9 @@ document.addEventListener("DOMContentLoaded", () => {
         winnersHistory.forEach(entry => {
             const li = document.createElement("li");
             if (entry.prize) {
-                li.textContent = `${entry.participant} → ${entry.prize}`;
+                li.textContent = `GANADOR→ ${entry.participant} GANO→ ${entry.prize} CEDULA DEL GANADOR→ ________________________ FIRMA DEL GANADOR→_________________`;
             } else {
-                li.textContent = `${entry.participant} → (premio pendiente)`;
+                li.textContent = `GANADOR→ ${entry.participant} → (premio pendiente)`;
             }
             historyList.appendChild(li);
         });

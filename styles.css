@@ -74,8 +74,8 @@ h1 {
 
 /* RULETA BIEN GRANDE */
 canvas.wheel-canvas {
-    width: 620px;
-    height: 620px;
+    width: 1150px;
+    height: 1150px;
     border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, #1f2937, #020617);
 }
